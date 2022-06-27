@@ -802,6 +802,7 @@ class StandardROIHeads(ROIHeads):
 
         if self.training:
             losses = self.box_predictor.losses(predictions, proposals)
+            precision_recall = self.box_predictor.precision_recall(predictions, proposals)
             # proposals is modified in-place below, so losses must be computed first.
             if self.train_on_pred_boxes:
                 with torch.no_grad():
@@ -810,7 +811,7 @@ class StandardROIHeads(ROIHeads):
                     )
                     for proposals_per_image, pred_boxes_per_image in zip(proposals, pred_boxes):
                         proposals_per_image.proposal_boxes = Boxes(pred_boxes_per_image)
-            return losses
+            return losses, precision_recall
         else:
             pred_instances, _ = self.box_predictor.inference(predictions, proposals)
             return pred_instances
