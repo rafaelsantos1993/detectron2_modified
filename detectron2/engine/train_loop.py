@@ -271,7 +271,7 @@ class SimpleTrainer(TrainerBase):
         """
         If you want to do something with the losses, you can wrap the model.
         """
-        loss_dict = self.model(data)
+        loss_dic, precision_recall = self.model(data)
         
         if isinstance(loss_dict, torch.Tensor):
             losses = loss_dict
