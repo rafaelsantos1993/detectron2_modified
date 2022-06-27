@@ -272,9 +272,6 @@ class SimpleTrainer(TrainerBase):
         If you want to do something with the losses, you can wrap the model.
         """
         loss_dict = self.model(data)
-
-        logger = logging.getLogger(__name__)
-        logger.info("Losses Dict: {}\n".format(loss_dict))
         
         if isinstance(loss_dict, torch.Tensor):
             losses = loss_dict
