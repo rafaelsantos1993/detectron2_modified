@@ -22,8 +22,6 @@ from .fast_rcnn import FastRCNNOutputLayers
 from .keypoint_head import build_keypoint_head
 from .mask_head import build_mask_head
 
-from torchmetrics.functional import precision_recall
-
 ROI_HEADS_REGISTRY = Registry("ROI_HEADS")
 ROI_HEADS_REGISTRY.__doc__ = """
 Registry for ROI heads in a generalized R-CNN model.
